@@ -7,11 +7,13 @@ use wulfheart\lxcd\component;
 
 Route::prefix('lxcd')->namespace('lxcd')->middleware('web')->group(function () {
     Route::get('{path?}', function ($path = null) {
-        $base = env('LXCD_COMPONENTS_PATH');
+        $LXCD_COMPONENTS_NAMESPACE = env('LXCD_COMPONENTS_NAMESPACE', 'App\View\Components');
+        $LXCD_COMPONENTS_PATH = env('LXCD_COMPONENTS_PATH', '..\..\..\App\View\Components');
+        $base = $LXCD_COMPONENTS_PATH;
         $dir = $base . $path;
-        $namespace = env('LXCD_COMPONENTS_NAMESPACE');
+        $namespace = $LXCD_COMPONENTS_NAMESPACE;
         if (!empty($path)) {
-            $namespace = env('LXCD_COMPONENTS_NAMESPACE'). '\\' . $path;
+            $namespace = $LXCD_COMPONENTS_NAMESPACE . '\\' . $path;
         }
         try {
             $scandir = scandir($dir);
@@ -22,7 +24,7 @@ Route::prefix('lxcd')->namespace('lxcd')->middleware('web')->group(function () {
 
         sort($content, SORT_NATURAL);
 
-        $dirurl = new dirpath('lxcd', $path ?? '', env('LXCD_COMPONENTS_PATH'));
+        $dirurl = new dirpath('lxcd', $path ?? '', $LXCD_COMPONENTS_PATH);
 
 
         // ! Assumption: Two types of content:
