@@ -1,0 +1,24 @@
+{
+    "name": "wulfheart/lxcd",
+    "description": "Blade x-component documentation",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wulfheart",
+            "email": "dev@alexfwulf.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "wulfheart\\lxcd\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "wulfheart\\lxcd\\lxcdServiceProvider"
+            ]
+        }
+    }
+}
