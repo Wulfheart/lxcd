@@ -16,7 +16,8 @@ class dirpath
     public function __construct(string $base_url, string $dir, string $base_filesystem = null)
     {
         $this->base_url = $base_url;
-        $this->bricks = explode('/', $dir);
+        $xplosion = explode('/', $dir);
+        $this->bricks = (!empty($xplosion)) ? $xplosion : [];
         $this->base_filesystem = $base_filesystem;
     }
 
@@ -30,7 +31,8 @@ class dirpath
 
     public function current()
     {
-        return $this->base_url . '/' . implode('/', $this->bricks);
+            return trim($this->base_url . '/' . implode('/', $this->bricks), '/');
+        
     }
 
     public function fs_current(){
@@ -47,6 +49,6 @@ class dirpath
 
     public function child(string $child)
     {
-        return $this->current() . $child;
+        return $this->current() . "/" . $child;
     }
 }
