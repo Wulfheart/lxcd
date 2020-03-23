@@ -8,9 +8,9 @@ use wulfheart\lxcd\component;
 Route::prefix('lxcd')->namespace('lxcd')->middleware('web')->group(function () {
     Route::get('{path?}', function ($path = null) {
         $LXCD_COMPONENTS_NAMESPACE = env('LXCD_COMPONENTS_NAMESPACE', 'App\View\Components');
-        $LXCD_COMPONENTS_PATH = trim(env('LXCD_COMPONENTS_PATH', realpath(dirname(__FILE__) . '\..\..\..\..\App\View\Components')), '\/');
+        $LXCD_COMPONENTS_PATH = trim(env('LXCD_COMPONENTS_PATH', realpath(dirname(__FILE__) . '/../../../../App/View/Components')), '\/');
         $base = $LXCD_COMPONENTS_PATH;
-        $dir = $base . '\\' . $path;
+        $dir = $base . '/' . $path;
         $namespace = $LXCD_COMPONENTS_NAMESPACE;
         if (!empty($path)) {
             $namespace = $LXCD_COMPONENTS_NAMESPACE . '\\' . $path;
