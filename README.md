@@ -1,73 +1,80 @@
-# LXCD
+# :package_description
 
-LXCD, short for Laravel x-Components Discovery, is a package aimed to make the new [Laravel Blade x-components](https://laravel.com/docs/7.x/blade#components) discoverable so you don't have to remember every single parameter. 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/:package_name.svg?style=flat-square)](https://packagist.org/packages/spatie/:package_name)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/:package_name/run-tests?label=tests)](https://github.com/spatie/:package_name/actions?query=workflow%3Arun-tests+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/spatie/:package_name.svg?style=flat-square)](https://packagist.org/packages/spatie/:package_name)
 
+**Note:** Replace ```:author_name``` ```:author_username``` ```:author_email``` ```:package_name``` ```:package_description``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line. You can also run `configure-skeleton.sh` to do this automatically.
 
-## Prerequisites
+This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
-Before you begin, ensure you have met the following requirements:
-* You are using Laravel 7.x or higher.
-* You document your code with [phpDocumentor](https://www.phpdoc.org/) or no system at all.
-* You haven't opted out of [Laravel's Package Discovery](https://laravel.com/docs/7.x/packages#package-discovery). If you have I'm assuming that you are able to register the package by yourself.
+## Support us
+
+Learn how to create a package like this one, by watching our premium video course:
+
+[![Laravel Package training](https://spatie.be/github/package-training.jpg)](https://laravelpackage.training)
+
+We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+
+We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
+You can install the package via composer:
 
 ```bash
-composer require wulfheart/lxcd
+composer require spatie/package-skeleton-laravel
+```
+
+You can publish and run the migrations with:
+
+```bash
+php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" --tag="migrations"
+php artisan migrate
+```
+
+You can publish the config file with:
+```bash
+php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" --tag="config"
+```
+
+This is the contents of the published config file:
+
+```php
+return [
+];
 ```
 
 ## Usage
 
-### Basic
-
-LXCD hooks into phpDocumentor's in-code-documentation. To document your code add the following comment over your component class' `__construct` method.
-
-```php
-/**
-     * Label
-     * 
-     * Description
-     *
-     * @param   string  $var_with_default  Parameter Description {@default default_val}
-     * @param   string  $var_without_default     Parameter description.
-     *
-     */
-    public function __construct(string $var_with_default = 'default_val', string $var_without_default)
-    {
-        #code...
-    }
+``` php
+$skeleton = new Spatie\Skeleton();
+echo $skeleton->echoPhrase('Hello, Spatie!');
 ```
 
-This will result in the documentation below:
+## Testing
 
-![Rendered component card](./img/Rendered_card.png "Rendered component card")
-
-You can access LXCD via `<your-app.url>/lxcd`. Please note that LXCD also discovers subfolders of your components.
-
-### Advanced
-
-If you are using a different base namespace for your components than `App\View\Components` or a different package installation location than `./vendor/wulfheart/lxcd` you may override LXCD's default settings via your `.env` file:
-```env
-LXCD_COMPONENTS_PATH = this\is\your\custom\path\to\your\components\root
-LXCD_COMPONENTS_NAMESPACE = your\custom\base\namespace 
+``` bash
+composer test
 ```
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-If you experience any problems, bugs or have feature requests feel free to [open an issue](https://github.com/Wulfheart/lxcd/issues/new).
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Roadmap 🚧
+## Security
 
-- [ ] Make the blade component easily copiable
-- [ ] Preview the component visually (this might be quite complicated 😅)
-- [ ]  ❓ Make a [feature request](https://github.com/Wulfheart/lxcd/issues/new).
+If you discover any security related issues, please email freek@spatie.be instead of using the issue tracker.
 
-## Contact
+## Credits
 
-Follow me on [Twitter](https://twitter.com/alexfwulf) or [open an issue](https://github.com/Wulfheart/lxcd/issues/new).
+- [:author_name](https://github.com/:author_username)
+- [All Contributors](../../contributors)
 
 ## License
 
-This project is licensed under the MIT License. Please refer to the `LICENSE` file.
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
